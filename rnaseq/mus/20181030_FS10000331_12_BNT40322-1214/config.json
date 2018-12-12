@@ -1,1 +1,1 @@
-{"program": "/Users/olgabot/code/reflow-workflows/star_htseq.rf", "runs_file": "/Users/olgabot/code/reflow-batches/rnaseq/mus/20181030_FS10000331_12_BNT40322-1214/samples.csv"}
+{"program": "/home/ubuntu/reflow-workflows/workflows/rnaseq.rf", "runs_file": "samples.csv"}
