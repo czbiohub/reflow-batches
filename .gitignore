@@ -1,7 +1,6 @@
 # Ignore reflow state and log files
 log.*
-state.*
-
+state.lock
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
