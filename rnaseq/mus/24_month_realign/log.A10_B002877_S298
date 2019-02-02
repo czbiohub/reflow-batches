@@ -1,0 +1,123 @@
+2019/01/31 15:44:50 accepted alloc ec2-54-190-105-165.us-west-2.compute.amazonaws.com:9000/24c82f933402f9ed
+2019/01/31 15:44:54 run A10_B002877_S298: state: eval alloc ec2-54-190-105-165.us-west-2.compute.amazonaws.com:9000/24c82f933402f9ed
+2019/01/31 15:44:54 evaluating with configuration: executor *client.clientAlloc transferer *repository.Manager flags cacheextern,cacheread,cachewrite,nogc,norecomputeempty,topdown flowconfig hashv2 cachelookuptimeout 1m0s
+2019/01/31 15:45:54 assoc.Get flow 5dbf55cb state FlowLookup {mem:1.0GiB cpu:16 disk:0B} exec image quay.io/biocontainers/htseq:0.9.1--py36_0 cmd "\n     htseq-count -r name -s no -f bam -m \\\n     \tintersection-nonempty %s %s > %s\n   " deps 3ba58a5e,90221d44: context deadline exceeded
+2019/01/31 15:45:54 assoc.Get flow 32f12cd4 state FlowLookup {mem:4.0GiB cpu:8 disk:0B} exec image quay.io/biocontainers/fastqc:0.11.7--4 cmd "\n        /usr/local/bin/fastqc -o %s --threads 8 %s/*.fastq.gz\n\t" deps f4269562: context deadline exceeded
+2019/01/31 15:45:54 assoc.Get flow 36ce05eb state FlowLookup {mem:1.0GiB cpu:1 disk:0B} exec image quay.io/biocontainers/samtools:1.9--h8ee4bcc_1 cmd "\n        samtools index -b %s %s\n    " deps 230b22e7: context deadline exceeded
+2019/01/31 15:45:54 assoc.Get flow b18d835b state FlowLookup {mem:20.0GiB cpu:1 disk:0B} exec image quay.io/biocontainers/samtools:1.9--h8ee4bcc_1 cmd "\n        samtools sort -m 18GB -o %s %s\n    " deps 0fc463df: context deadline exceeded
+2019/01/31 15:45:54 assoc.Get flow 7b4699a8 state FlowLookup {mem:4.0GiB cpu:8 disk:0B} exec image quay.io/biocontainers/fastqc:0.11.7--4 cmd "\n        /usr/local/bin/fastqc -o %s --threads 8 %s/*.fastq.gz\n\t" deps 68360060: context deadline exceeded
+2019/01/31 15:46:54 assoc.Get flow 5ed066d1 state FlowLookup {mem:1.0GiB cpu:1 disk:0B} exec image ubuntu:16.04 cmd "\n\t\tgunzip -c %s > %s\n\t" deps 4ae097a1: context deadline exceeded
+2019/01/31 15:46:54 assoc.Get flow bc1a769d state FlowLookup {mem:20.0GiB cpu:1 disk:0B} exec image quay.io/biocontainers/samtools:1.9--h8ee4bcc_1 cmd "\n        samtools sort -m 18GB -n -o %s %s\n    " deps 230b22e7: context deadline exceeded
+2019/01/31 15:46:54 assoc.Get flow 02ec5857 state FlowLookup {} intern url "s3://czb-maca/Plate_seq/24_month/180626_A00111_0166_BH5LNVDSXX/fastqs/A10_B002877_S298_R2_001.fastq.gz": context deadline exceeded
+2019/01/31 15:46:54 assoc.Get flow c9443cc2 state FlowLookup {mem:12.0GiB cpu:12 disk:0B} exec image quay.io/biocontainers/star:2.6.0c--0 cmd "\n        cd %s\n        STAR --outFilterType BySJout \\\n            --outFilterMultimapNmax 20 \\\n            --alignSJoverhangMin 8 \\\n            --alignSJDBoverhangMin 1 \\\n            --outFilterMismatchNmax 999 \\\n            --outFilterMismatchNoverLmax 0.04 \\\n            --alignIntronMin 20 \\\n            --alignIntronMax 1000000 \\\n            --alignMatesGapMax 1000000 \\\n            --outSAMstrandField intronMotif \\\n            --outSAMtype BAM Unsorted \\\n            --outSAMattributes NH HI NM MD \\\n            --outReadsUnmapped Fastx \\\n            --readFilesCommand zcat \\\n            --runThreadN 12 \\\n            --genomeDir %s \\\n            --readFilesIn %s %s\n    " deps 66d64ed5,eae0a6ee,bfb1d20b: context deadline exceeded
+2019/01/31 15:46:54 assoc.Get flow 7b16f47b state FlowLookup {} intern url "s3://czb-maca/Plate_seq/24_month/180626_A00111_0166_BH5LNVDSXX/fastqs/A10_B002877_S298_R1_001.fastq.gz": context deadline exceeded
+2019/01/31 15:46:54  ->  stringutils.SplitByPipe 02ec5857 run  intern ..11_0166_BH5LNVDSXX/fastqs/A10_B002877_S298_R2_001.fastq.gz
+2019/01/31 15:46:54 stringutils.SplitByPipe 02ec5857 /home/shayanhoss/code/reflow-workflows/tools/stringutils.rf:25:7:
+	sha256:02ec5857b3ad531354f05a85682082c5d08585ac40e32e5fc7fa89afd85e9a08
+2019/01/31 15:46:54  ->  stringutils.SplitByPipe 7b16f47b run  intern ..11_0166_BH5LNVDSXX/fastqs/A10_B002877_S298_R1_001.fastq.gz
+2019/01/31 15:46:54 stringutils.SplitByPipe 7b16f47b /home/shayanhoss/code/reflow-workflows/tools/stringutils.rf:25:7:
+	sha256:7b16f47bebae60fedb272584dc7dab92f70cfa9a3e8e3fe151e2eb46bb1589aa
+2019/01/31 15:46:54  <-  stringutils.SplitByPipe 7b16f47b ok   intern 0s 7.4MiB
+2019/01/31 15:46:54 stringutils.SplitByPipe 7b16f47b /home/shayanhoss/code/reflow-workflows/tools/stringutils.rf:25:7:
+	sha256:7b16f47bebae60fedb272584dc7dab92f70cfa9a3e8e3fe151e2eb46bb1589aa
+	result:
+	    . sha256:b387aaecc8f417d80c556f22f252cd73485143436eb3ce541cfd990f1c17663b 7.4MiB
+2019/01/31 15:46:54  <-  stringutils.SplitByPipe 02ec5857 ok   intern 0s 7.4MiB
+2019/01/31 15:46:54 stringutils.SplitByPipe 02ec5857 /home/shayanhoss/code/reflow-workflows/tools/stringutils.rf:25:7:
+	sha256:02ec5857b3ad531354f05a85682082c5d08585ac40e32e5fc7fa89afd85e9a08
+	result:
+	    . sha256:0bc50725999a221404af737b820fbb37200b387075d75b1fe7922f2da995abba 7.4MiB
+2019/01/31 15:46:54  ->  fastqc.FastQC 7b4699a8 run    exec quay.io/biocontainers/fastqc:0.11.7--4 ../fastqc -o {{out}} --threads 8 {{d}}/*.fastq.gz
+2019/01/31 15:46:54 fastqc.FastQC 7b4699a8 /home/shayanhoss/code/reflow-workflows/tools/fastqc.rf:18:9:
+	resources: {mem:4.0GiB cpu:8 disk:0B}
+	sha256:708a4852f72fe62a013670454eea55f4f7d9e0475c3542de7188ecff22ce696f
+	sha256:7b4699a8904c29a7310ce387364914a3424d800a20247a19c40da45cd56dd3f8
+	ec2-54-190-105-165.us-west-2.compute.amazonaws.com:9000/24c82f933402f9ed/7b4699a8904c29a7310ce387364914a3424d800a20247a19c40da45cd56dd3f8
+	quay.io/biocontainers/fastqc:0.11.7--4
+	command:
+	    /usr/local/bin/fastqc -o {{out}} --threads 8 {{d}}/*.fastq.gz
+	where:
+	    {{d}} = 
+	        A10_B002877_S298_R1.fastq.gz sha256:b387aaecc8f417d80c556f22f252cd73485143436eb3ce541cfd990f1c17663b 7.4MiB
+2019/01/31 15:46:54  ->  fastqc.FastQC 32f12cd4 run    exec quay.io/biocontainers/fastqc:0.11.7--4 ../fastqc -o {{out}} --threads 8 {{d}}/*.fastq.gz
+2019/01/31 15:46:54 fastqc.FastQC 32f12cd4 /home/shayanhoss/code/reflow-workflows/tools/fastqc.rf:18:9:
+	resources: {mem:4.0GiB cpu:8 disk:0B}
+	sha256:c7dcf7a509c5df238766e3067023542ca5bb174c93da916d071b6925f9760e88
+	sha256:32f12cd4c5f00cb7461a27652d8e2a78deeabd32caf6094de78173ac63de61f9
+	ec2-54-190-105-165.us-west-2.compute.amazonaws.com:9000/24c82f933402f9ed/32f12cd4c5f00cb7461a27652d8e2a78deeabd32caf6094de78173ac63de61f9
+	quay.io/biocontainers/fastqc:0.11.7--4
+	command:
+	    /usr/local/bin/fastqc -o {{out}} --threads 8 {{d}}/*.fastq.gz
+	where:
+	    {{d}} = 
+	        A10_B002877_S298_R2.fastq.gz sha256:0bc50725999a221404af737b820fbb37200b387075d75b1fe7922f2da995abba 7.4MiB
+2019/01/31 15:46:58  <-  fastqc.FastQC 7b4699a8 ok     exec 3s 1.2MiB
+2019/01/31 15:46:58 fastqc.FastQC 7b4699a8 /home/shayanhoss/code/reflow-workflows/tools/fastqc.rf:18:9:
+	resources: {mem:4.0GiB cpu:8 disk:0B}
+	sha256:708a4852f72fe62a013670454eea55f4f7d9e0475c3542de7188ecff22ce696f
+	sha256:7b4699a8904c29a7310ce387364914a3424d800a20247a19c40da45cd56dd3f8
+	ec2-54-190-105-165.us-west-2.compute.amazonaws.com:9000/24c82f933402f9ed/7b4699a8904c29a7310ce387364914a3424d800a20247a19c40da45cd56dd3f8
+	quay.io/biocontainers/fastqc:0.11.7--4
+	command:
+	    /usr/local/bin/fastqc -o {{out}} --threads 8 {{d}}/*.fastq.gz
+	where:
+	    {{d}} = 
+	        A10_B002877_S298_R1.fastq.gz sha256:b387aaecc8f417d80c556f22f252cd73485143436eb3ce541cfd990f1c17663b 7.4MiB
+	result:
+	    {{out}} =
+	        A10_B002877_S298_R1_fastqc.html sha256:4f2dee9c2f772bc739cf4f7802edc4761a71ec86d136bc5d039bb71df3bf647d 336.0KiB
+	        A10_B002877_S298_R1_fastqc.zip sha256:11a7a04305895925d680fe677527062da0366077261594e4b6d99eb6908fdd2d 852.9KiB
+	profile:
+	    cpu mean=1.4 max=2.2
+	    mem mean=355.1MiB max=687.5MiB
+	    disk mean=0B max=0B
+	    tmp mean=32.0KiB max=32.0KiB
+2019/01/31 15:46:58  <-  fastqc.FastQC 32f12cd4 ok     exec 3s 1.2MiB
+2019/01/31 15:46:58 fastqc.FastQC 32f12cd4 /home/shayanhoss/code/reflow-workflows/tools/fastqc.rf:18:9:
+	resources: {mem:4.0GiB cpu:8 disk:0B}
+	sha256:c7dcf7a509c5df238766e3067023542ca5bb174c93da916d071b6925f9760e88
+	sha256:32f12cd4c5f00cb7461a27652d8e2a78deeabd32caf6094de78173ac63de61f9
+	ec2-54-190-105-165.us-west-2.compute.amazonaws.com:9000/24c82f933402f9ed/32f12cd4c5f00cb7461a27652d8e2a78deeabd32caf6094de78173ac63de61f9
+	quay.io/biocontainers/fastqc:0.11.7--4
+	command:
+	    /usr/local/bin/fastqc -o {{out}} --threads 8 {{d}}/*.fastq.gz
+	where:
+	    {{d}} = 
+	        A10_B002877_S298_R2.fastq.gz sha256:0bc50725999a221404af737b820fbb37200b387075d75b1fe7922f2da995abba 7.4MiB
+	result:
+	    {{out}} =
+	        A10_B002877_S298_R2_fastqc.html sha256:b95680dcd9ab12c450303482b34d568d83deef3acf1c110d0df7874756b4f939 332.6KiB
+	        A10_B002877_S298_R2_fastqc.zip sha256:b163064d91e9fcdf9010b7d33d8354c3acbbbba5d165cf80941a3653f603c876 852.6KiB
+	profile:
+	    cpu mean=1.8 max=3.7
+	    mem mean=472.0MiB max=830.4MiB
+	    disk mean=0B max=0B
+	    tmp mean=32.0KiB max=32.0KiB
+2019/01/31 15:46:58  ->  rnaseq.Main  691fe7fe run  extern ../24_month/180626_A00111_0166_BH5LNVDSXX/results_realigned/ 1.2MiB
+2019/01/31 15:46:58  ->  rnaseq.Main  57994518 run  extern ../24_month/180626_A00111_0166_BH5LNVDSXX/results_realigned/ 1.2MiB
+2019/01/31 15:47:01  <-  rnaseq.Main  57994518 ok   extern 1s 0B
+2019/01/31 15:47:01  <-  rnaseq.Main  691fe7fe ok   extern 1s 0B
+2019/01/31 15:47:54 assoc.Get flow feca46c1 state FlowLookup {} intern url "s3://czbiohub-reference/gencode/mouse/vM19/": context deadline exceeded
+2019/01/31 15:47:54 assoc.Get flow 1f5dcd34 state FlowLookup {mem:32.0GiB cpu:1 disk:0B} exec image quay.io/biocontainers/star:2.6.0c--0 cmd "\n        STAR \\\n        --runThreadN 12 \\\n        --runMode genomeGenerate \\\n        --genomeDir %s \\\n        --genomeFastaFiles %s \\\n        --sjdbGTFfile %s\n    " deps 7c85dd4a,90221d44: context deadline exceeded
+2019/01/31 15:48:03  ->  rnaseq.Main.ref feca46c1 run  intern s3://czbiohub-reference/gencode/mouse/vM19/
+2019/01/31 15:48:03 rnaseq.Main.ref feca46c1 /home/shayanhoss/code/reflow-workflows/workflows/rnaseq.rf:59:43:
+	sha256:feca46c11418dc6339b4d02dc3ec2b42a30c461fb1e27a9f7a46bff03e18e1ff
+2019/01/31 15:48:20  <-  rnaseq.Main.ref feca46c1 err  intern 0s 25.1MiB
+	error intern s3://czbiohub-reference/gencode/mouse/vM19/: write /host/mnt/data/reflow/allocs/24c82f933402f9ed/execs/feca46c11418dc6339b4d02dc3ec2b42a30c461fb1e27a9f7a46bff03e18e1ff/download/472804338: no space left on device
+	/home/shayanhoss/code/reflow-workflows/workflows/rnaseq.rf:59:43
+2019/01/31 15:48:20 assoc.Get flow 245a6dd6 state FlowLookup {mem:1.0GiB cpu:1 disk:0B} exec image ubuntu:16.04 cmd "\n\t\tgunzip -c %s > %s\n\t" deps 0f78ff30: context canceled
+2019/01/31 15:48:20 total n=11 time=3m25s
+	ident                   n   ncache transfer runtime(m) cpu         mem(GiB)    disk(GiB)   tmp(GiB)
+	fileutils.Gunzip        1   0      0B                                                      
+	star.Align              1   0      0B                                                      
+	rnaseq.Main.ref         1   0      0B                                                      
+	star.Index              1   0      0B                                                      
+	rnaseq.Main             2   0      0B                                                      
+	fastqc.FastQC           2   0      0B       0/0/0      1.4/1.6/1.8 0.7/0.7/0.8 0.0/0.0/0.0 0.0/0.0/0.0
+	htseq.Count             1   0      0B                                                      
+	stringutils.SplitByPipe 2   0      0B                                                      
+	
+2019/01/31 15:48:20 marking run done after nonrecoverable error evaluation error:
+	intern s3://czbiohub-reference/gencode/mouse/vM19/: write /host/mnt/data/reflow/allocs/24c82f933402f9ed/execs/feca46c11418dc6339b4d02dc3ec2b42a30c461fb1e27a9f7a46bff03e18e1ff/download/472804338: no space left on device
+2019/01/31 15:48:20 run A10_B002877_S298: state: done error evaluation error:
+	intern s3://czbiohub-reference/gencode/mouse/vM19/: write /host/mnt/data/reflow/allocs/24c82f933402f9ed/execs/feca46c11418dc6339b4d02dc3ec2b42a30c461fb1e27a9f7a46bff03e18e1ff/download/472804338: no space left on device
